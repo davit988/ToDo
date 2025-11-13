@@ -1,0 +1,26 @@
+.addToDo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 25px;
+}
+
+.to {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  background-color: #e8e8e8;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+}
+
+.to button {
+    background-color: red;
+    border: 0;
+    padding: 5px 8px;
+    color: #fff;
+}

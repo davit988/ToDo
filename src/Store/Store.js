@@ -5,13 +5,20 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-
     default:
-        case "changeText" : 
-        return {
-            ...state ,
-            text : action.payload
-        }
+    case "changeText":
+      return {
+        ...state,
+        text: action.payload,
+      };
+    case "add":
+      return {
+        ...state,
+        todos: [
+          ...state.todos,
+          { id: Date.now(), title: state.text, isDone: false },
+        ],
+      };
       return state;
   }
 };
