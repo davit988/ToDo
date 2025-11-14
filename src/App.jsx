@@ -10,20 +10,23 @@ function App() {
   const toDoText = (e) => {
     dispatch({ type: "changeText", payload: e.target.value });
   };
- 
-  
+
   const add = () => {
     dispatch({ type: "add" });
   };
 
-   const deleteToDo = (id) => {
-                                      
-   }
+  const deleteToDo = (id) => {
+    dispatch({ type: "delete", id: id });
+  };
+
+  const checked = (id) => {
+    dispatch({ type: "checked", id: id });
+  };
 
   return (
     <>
       <ToDo state={state} toDoText={toDoText} add={add} />
-      <AddToDo deleteToDo={deleteToDo} toDo={state.todos} />
+      <AddToDo deleteToDo={deleteToDo} toDo={state.todos} checked={checked} />
     </>
   );
 }

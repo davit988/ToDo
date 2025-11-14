@@ -4,6 +4,8 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
+  console.log(state, action);
+
   switch (action.type) {
     default:
     case "changeText":
@@ -13,12 +15,32 @@ export const reducer = (state, action) => {
       };
     case "add":
       return {
-        ...state,
+        text: "",
         todos: [
           ...state.todos,
           { id: Date.now(), title: state.text, isDone: false },
         ],
       };
+    case "delete":
+      return {
+        ...state,
+        todos: [...state.todos.filter((elm) => elm.id !== action.id)],
+      };
+    case "checked":
+      return {
+        ...state,
+        todos: [
+          ...state.todos.map((elm) => {
+            if (elm.id === action.id) {
+              return {
+                ...elm,
+                isDone: !elm.isDone,
+              };
+            }
+          }),
+        ],
+      };
+
       return state;
   }
 };

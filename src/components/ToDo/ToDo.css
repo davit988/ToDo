@@ -6,17 +6,20 @@
   gap: 25px;
 }
 
-.toDo button{
-    padding: 5px 8px;
-    background-color: orange;
-    border: 0;
-    border-radius: 5px;
-    color: #fff;
+.toDo button {
+  padding: 5px 8px;
+  background-color: orange;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .toDo input {
-    padding: 3px 6px;
-    width: 250px;
+  padding: 3px 6px;
+  width: 250px;
 }
 
-
+.textIsDone {
+  color: green;
+}
