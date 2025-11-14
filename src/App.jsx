@@ -20,7 +20,7 @@ function App() {
   };
 
   const checked = (id) => {
-    dispatch({ type: "checked", id: id });
+    dispatch({ type: "checked", id:id});
   };
 
   return (

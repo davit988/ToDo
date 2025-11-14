@@ -35,7 +35,11 @@ export const reducer = (state, action) => {
               return {
                 ...elm,
                 isDone: !elm.isDone,
-              };
+              }
+            }else{
+              return{
+                ...elm
+              }
             }
           }),
         ],
