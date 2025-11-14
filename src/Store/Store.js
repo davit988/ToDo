@@ -4,8 +4,6 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
-  console.log(state, action);
-
   switch (action.type) {
     default:
     case "changeText":
@@ -14,13 +12,15 @@ export const reducer = (state, action) => {
         text: action.payload,
       };
     case "add":
-      return {
-        text: "",
-        todos: [
-          ...state.todos,
-          { id: Date.now(), title: state.text, isDone: false },
-        ],
-      };
+      if (state.text.trim()) {
+        return {
+          todos: [
+            { id: Date.now(), title: state.text, isDone: false },
+            ...state.todos,
+          ],
+          text: "",
+        };
+      }
     case "delete":
       return {
         ...state,
@@ -35,11 +35,11 @@ export const reducer = (state, action) => {
               return {
                 ...elm,
                 isDone: !elm.isDone,
-              }
-            }else{
-              return{
-                ...elm
-              }
+              };
+            } else {
+              return {
+                ...elm,
+              };
             }
           }),
         ],

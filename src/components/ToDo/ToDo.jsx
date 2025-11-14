@@ -6,8 +6,12 @@ export const ToDo = ({ state, toDoText, add }) => {
       <header>
         <div className="container">
           <div className="toDo">
-              <input placeholder="Task" value={state.text} onChange={(e) => toDoText(e)} />
-              <button onClick={add}>Add ToDo</button>
+            <input
+              placeholder="Task"
+              value={state.text}
+              onChange={(e) => toDoText(e)}
+            />
+            <button onClick={add}>Add ToDo</button>
           </div>
         </div>
       </header>

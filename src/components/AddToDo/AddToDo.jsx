@@ -8,7 +8,7 @@ export const AddToDo = ({ toDo, deleteToDo, checked }) => {
           <div className="addToDo">
             {toDo.map((elm) => {
               return (
-                <div className="to">
+                <div className={elm.isDone ? "tod" :"to"}>
                   <input
                     type="checkbox"
                     checked={elm.isDone}
