@@ -23,7 +23,7 @@
   border-radius: 5px;
   border: 1px solid #bfbfbf;
   transition: all 0.5s linear;
-  animation: action 1ms linear;
+  animation: driven 1ms linear;
   animation-timeline: view();
 }
 
@@ -39,7 +39,7 @@
   box-shadow: 10px 10px 10px rgba(132, 132, 132, 0.35);
   transform: scale(1.05);
   transition: all 0.5s linear;
-  animation: action 4ms linear;
+  animation: driven 4ms linear;
   animation-timeline: view();
 }
 
@@ -51,13 +51,14 @@ button {
   cursor: pointer;
 }
 
-@keyframes action {
+@keyframes driven {
   0% {
-    transform: scale(0.7);
+    transform: scale(0.6);
   }
-  20%,
-  60%,
-  80% {
+  50% {
     transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
   }
 }
