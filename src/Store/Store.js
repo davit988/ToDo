@@ -1,32 +1,45 @@
+const CHANGE_TEXT = "changeText";
+const ADD = "add";
+const DELETE = "delete";
+const CHECKED = "checked";
+const ASYNC_TODO = "async-todo";
+
 export const initialState = {
   text: "",
   todos: [],
 };
 
 export const reducer = (state, action) => {
+  console.log(state);
+  
   switch (action.type) {
-    default:
-    case "changeText":
+    case CHANGE_TEXT:
       return {
         ...state,
         text: action.payload,
       };
-    case "add":
+    case ADD:
       if (state.text.trim()) {
         return {
           todos: [
-            { id: Date.now(), title: state.text, isDone: false },
+            { id: Date.now(), title: state.text, completed: false },
             ...state.todos,
           ],
           text: "",
         };
       }
-    case "delete":
+    case DELETE:
       return {
         ...state,
         todos: [...state.todos.filter((elm) => elm.id !== action.id)],
       };
-    case "checked":
+
+    case ASYNC_TODO:
+      return {
+        ...state,
+        todos: action.payload,
+      };
+    case CHECKED:
       return {
         ...state,
         todos: [
@@ -34,7 +47,7 @@ export const reducer = (state, action) => {
             if (elm.id === action.id) {
               return {
                 ...elm,
-                isDone: !elm.isDone,
+                completed: !elm.completed,
               };
             } else {
               return {
@@ -44,7 +57,16 @@ export const reducer = (state, action) => {
           }),
         ],
       };
-
+    default:
       return state;
   }
 };
+
+export const asyncToDosAC = (data) => {
+  return { type: ASYNC_TODO, payload: data };
+};
+
+export const changeTextAC = (text) => ({ type: CHANGE_TEXT, payload: text });
+export const addAC = () => ({ type: ADD });
+export const deleteAC = (id) => ({ type: DELETE, id: id });
+export const checkedAC = (id) => ({ type: CHECKED, id: id });
